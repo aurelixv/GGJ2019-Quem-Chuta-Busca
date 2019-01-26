@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4801335031262651179}
   - component: {fileID: 5901064145332859698}
   - component: {fileID: 9155992246868930370}
+  - component: {fileID: 2721491203237696960}
   m_Layer: 0
   m_Name: dog-0
   m_TagString: Untagged
@@ -77,6 +78,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2721491203237696960
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292354439888139891}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 22, y: 25, z: 15}
+  m_Center: {x: 2, y: 13.5, z: -0.5}
 --- !u!1 &5391177587320334578
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +114,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5391177587320334578}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.0603533, y: -1.9395572e-18, z: 26.204966}
   m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
   m_Children:
