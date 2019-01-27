@@ -1,12 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FOV_Detection : MonoBehaviour {
 
     public Transform player;
     public float maxAngle = 45;
     public float maxRadius = 15;
+    public Slider slider;
+    public float multiplicador = 0.005f;
+    public Color color = Color.yellow;
+    public Image spotBar;
+    public Gradient gradient;
+    public GradientColorKey[] gradientColorKey;
+    public GradientAlphaKey[] gradientAlphaKey;
 
     private bool isInFOV = false;
 
@@ -66,11 +74,43 @@ public class FOV_Detection : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        
+        slider.value = 0.0f;
+        spotBar.color = Color.red;
+        gradientColorKey = new GradientColorKey[3];
+        gradientColorKey[0].color = Color.yellow;
+        gradientColorKey[0].time = 0.25f;
+        gradientColorKey[1].color = Color.magenta;
+        gradientColorKey[1].time = 0.5f;
+        gradientColorKey[2].color = Color.red;
+        gradientColorKey[2].time = 0.75f;
+
+        gradientAlphaKey = new GradientAlphaKey[3];
+        gradientAlphaKey[0].alpha = 0.5f;
+        gradientAlphaKey[0].time = 0.0f;
+        gradientAlphaKey[1].alpha = 0.5f;
+        gradientAlphaKey[1].time = 0.33f;
+        gradientAlphaKey[2].alpha = 0.5f;
+        gradientAlphaKey[2].time = 0.66f;
+
+        gradient.SetKeys(gradientColorKey, gradientAlphaKey);
     }
 
     // Update is called once per frame
     private void Update() {
         isInFOV = inFOV(transform, player, maxAngle, maxRadius);
+    }
+
+    private void FixedUpdate()
+    {
+        if (isInFOV)
+        {
+            slider.value += multiplicador;
+            spotBar.color = gradient.Evaluate(slider.value);
+        }
+        else if(slider.value > 0)
+        {
+            slider.value -= multiplicador/2;
+            spotBar.color = gradient.Evaluate(slider.value);
+        }
     }
 }
