@@ -114,27 +114,26 @@ public class FOV_Detection : MonoBehaviour {
         }
     }
 
-    private void FixedUpdate() {
-        if (isInFOV) {
-            slider.value += multiplicador;
-            spotBar.color = gradient.Evaluate(slider.value);
-        }
-        else if(slider.value > 0) {
-            slider.value -= multiplicador/2;
-            spotBar.color = gradient.Evaluate(slider.value);
-        }
-    }
-
-    private IEnumerator WaitForAudio(AudioSource au) {
-        do {
-            yield return null;
-        } while ( au.isPlaying );
-    }
-
-
-    IEnumerator WaitAudio()
+    private void FixedUpdate()
     {
-        Debug.Log("1");
-        yield return new WaitForSeconds(5);
+        if (isInFOV)
+        {
+            //slider.value += multiplicador;
+            //spotBar.color = gradient.Evaluate(slider.value);
+            audio.Play();
+            StartCoroutine(xunda(audio));
+
+        }
+        //else if(slider.value > 0)
+        //{
+        //    slider.value -= multiplicador/2;
+        //    spotBar.color = gradient.Evaluate(slider.value);
+        //}
+    }
+
+    IEnumerator xunda(AudioSource audio)
+    {
+        yield return new WaitForSecondsRealtime(audio.clip.length);
+        SceneManager.LoadScene("fail");
     }
 }
