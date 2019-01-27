@@ -36,7 +36,7 @@ public class SprinklerController : MonoBehaviour {
     }
 
     public static bool inFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius) {
-        Collider[] overlaps = new Collider[10];
+        Collider[] overlaps = new Collider[200];
         // checks every object in radius and puts it in array, count is how many obj we have
         int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
 
