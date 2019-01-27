@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 13d8e78fe2b8dd04ea2ed71a49110a93
+guid: 865338fa1f8a2aa439ca2f6e7c80cd14
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: cat-2
+    100000: mailbox
     100002: //RootNode
-    400000: cat-2
+    400000: mailbox
     400002: //RootNode
     2100000: palette
-    2300000: cat-2
-    3300000: cat-2
-    4300000: cat-2
+    2300000: mailbox
+    3300000: mailbox
+    4300000: mailbox
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -42,7 +42,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.05
+    globalScale: 0.08
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
