@@ -26,11 +26,11 @@ public class CatController : MonoBehaviour
             StartCoroutine(xunda(audio));
             //return;
         }
+    }
 
-        IEnumerator xunda(AudioSource audio)
-        {
-            yield return new WaitForSecondsRealtime(audio.clip.length);
-            SceneManager.LoadScene("fail");
-        }
+    IEnumerator xunda(AudioSource audio)
+    {
+        yield return new WaitForSecondsRealtime(audio.clip.length);
+        SceneManager.LoadScene("fail");
     }
 }

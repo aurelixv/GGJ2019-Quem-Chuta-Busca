@@ -75,26 +75,23 @@ public class SprinklerController : MonoBehaviour {
     // Update is called once per frame
     private void Update() {
         isInFOV = inFOV(transform, player, maxAngle, maxRadius);
-        if (isInFOV) {
-            audio.Play(0);
-            while(audio.isPlaying);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            SceneManager.LoadScene("fail");
-
-            //Invoke("changeScene", audio.);
-            
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-            
-            //weapon.WeaponTransform.gameObject.SetActive(false);
-            //SceneManager.LoadScene("fail");
-            //return;
-        }
         if (direction) {
             transform.Rotate(0, speed, 0);
         } else {
             transform.Rotate(0, - speed, 0);
         }
+    }
+
+    private void FixedUpdate() {
+        if (isInFOV) {
+            StartCoroutine(xunda(audio));
+        }
+    }
+
+        IEnumerator xunda(AudioSource audio)
+    {
+        audio.Play();
+        yield return new WaitForSecondsRealtime(audio.clip.length);
+        SceneManager.LoadScene("fail");
     }
 }

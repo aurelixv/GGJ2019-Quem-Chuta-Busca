@@ -76,25 +76,25 @@ public class FOV_Detection : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        slider.value = 0.0f;
-        spotBar.color = Color.red;
-        gradientColorKey = new GradientColorKey[3];
-        gradientColorKey[0].color = Color.yellow;
-        gradientColorKey[0].time = 0.25f;
-        gradientColorKey[1].color = Color.magenta;
-        gradientColorKey[1].time = 0.5f;
-        gradientColorKey[2].color = Color.red;
-        gradientColorKey[2].time = 0.75f;
+        // slider.value = 0.0f;
+        // spotBar.color = Color.red;
+        // gradientColorKey = new GradientColorKey[3];
+        // gradientColorKey[0].color = Color.yellow;
+        // gradientColorKey[0].time = 0.25f;
+        // gradientColorKey[1].color = Color.magenta;
+        // gradientColorKey[1].time = 0.5f;
+        // gradientColorKey[2].color = Color.red;
+        // gradientColorKey[2].time = 0.75f;
 
-        gradientAlphaKey = new GradientAlphaKey[3];
-        gradientAlphaKey[0].alpha = 0.5f;
-        gradientAlphaKey[0].time = 0.0f;
-        gradientAlphaKey[1].alpha = 0.5f;
-        gradientAlphaKey[1].time = 0.33f;
-        gradientAlphaKey[2].alpha = 0.5f;
-        gradientAlphaKey[2].time = 0.66f;
+        // gradientAlphaKey = new GradientAlphaKey[3];
+        // gradientAlphaKey[0].alpha = 0.5f;
+        // gradientAlphaKey[0].time = 0.0f;
+        // gradientAlphaKey[1].alpha = 0.5f;
+        // gradientAlphaKey[1].time = 0.33f;
+        // gradientAlphaKey[2].alpha = 0.5f;
+        // gradientAlphaKey[2].time = 0.66f;
 
-        gradient.SetKeys(gradientColorKey, gradientAlphaKey);
+        // gradient.SetKeys(gradientColorKey, gradientAlphaKey);
     }
 
     // Update is called once per frame
@@ -102,15 +102,16 @@ public class FOV_Detection : MonoBehaviour {
         isInFOV = inFOV(transform, player, maxAngle, maxRadius);
 
         if (isInFOV) {
-            if (!audio.isPlaying) {
-                audio.Play();
-                StartCoroutine(WaitForAudio(audio));
-            }
+
+            //if (!audio.isPlaying) {
+                //audio.Play();
+                //StartCoroutine(WaitForAudio(audio));
+            //}
             //StartCoroutine(WaitAudio());
             //yield WaitForAudio(audio);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            SceneManager.LoadScene("fail");
+            //Cursor.lockState = CursorLockMode.None;
+            //Cursor.visible = true;
+            //SceneManager.LoadScene("fail");
         }
     }
 
@@ -118,10 +119,9 @@ public class FOV_Detection : MonoBehaviour {
     {
         if (isInFOV)
         {
+            StartCoroutine(xunda(audio));
             //slider.value += multiplicador;
             //spotBar.color = gradient.Evaluate(slider.value);
-            audio.Play();
-            StartCoroutine(xunda(audio));
 
         }
         //else if(slider.value > 0)
@@ -133,6 +133,7 @@ public class FOV_Detection : MonoBehaviour {
 
     IEnumerator xunda(AudioSource audio)
     {
+        audio.Play();
         yield return new WaitForSecondsRealtime(audio.clip.length);
         SceneManager.LoadScene("fail");
     }
