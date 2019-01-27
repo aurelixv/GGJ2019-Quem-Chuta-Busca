@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 79fb659344ac2ca4d95e3f95bf420457
+guid: 2a39121be4534504387b9cac0fb5600f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: wall-1
+    100000: casa-4
     100002: //RootNode
-    400000: wall-1
+    400000: casa-4
     400002: //RootNode
     2100000: palette
-    2300000: wall-1
-    3300000: wall-1
-    4300000: wall-1
+    2300000: casa-4
+    3300000: casa-4
+    4300000: casa-4
   externalObjects: {}
   materials:
     importMaterials: 1
