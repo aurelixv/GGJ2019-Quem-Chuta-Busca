@@ -10,6 +10,7 @@ public class SprinklerController : MonoBehaviour {
     public float maxRadius = 5;
     public int speed = 2;
     public bool direction = false;
+    public AudioSource audio;
 
     private bool isInFOV = false;
 
@@ -75,19 +76,25 @@ public class SprinklerController : MonoBehaviour {
     private void Update() {
         isInFOV = inFOV(transform, player, maxAngle, maxRadius);
         if (isInFOV) {
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            audio.Play(0);
+            while(audio.isPlaying);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            //weapon.WeaponTransform.gameObject.SetActive(false);
             SceneManager.LoadScene("fail");
-            return;
+
+            //Invoke("changeScene", audio.);
+            
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+            
+            //weapon.WeaponTransform.gameObject.SetActive(false);
+            //SceneManager.LoadScene("fail");
+            //return;
         }
         if (direction) {
             transform.Rotate(0, speed, 0);
         } else {
             transform.Rotate(0, - speed, 0);
         }
-
     }
-
 }
