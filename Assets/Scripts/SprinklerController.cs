@@ -88,8 +88,7 @@ public class SprinklerController : MonoBehaviour {
         }
     }
 
-        IEnumerator xunda(AudioSource audio)
-    {
+    IEnumerator xunda(AudioSource audio) {
         audio.Play();
         yield return new WaitForSecondsRealtime(audio.clip.length);
         SceneManager.LoadScene("fail");
