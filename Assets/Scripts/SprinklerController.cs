@@ -5,8 +5,9 @@ using UnityEngine;
 public class SprinklerController : MonoBehaviour {
 
     public Transform player;
-    public float maxAngle;
-    public float maxRadius;
+    public float maxAngle = 20;
+    public float maxRadius = 5;
+    public int speed = 2;
 
     private bool isInFOV = false;
 
@@ -15,7 +16,6 @@ public class SprinklerController : MonoBehaviour {
         Gizmos.DrawWireSphere(transform.position, maxRadius);
 
         Vector3 fovLine1 = Quaternion.AngleAxis(maxAngle, transform.up) * transform.forward * maxRadius;
-
         Vector3 fovLine2 = Quaternion.AngleAxis(-maxAngle, transform.up) * transform.forward* maxRadius;
 
         // FOV angle
@@ -34,13 +34,13 @@ public class SprinklerController : MonoBehaviour {
     }
 
     public static bool inFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius) {
-        Collider[] overlaps = new Collider[25];
+        Collider[] overlaps = new Collider[10];
         // checks every object in radius and puts it in array, count is how many obj we have
         int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
 
-        for (int i = 0; i < count + 1; i++) {
-            if (overlaps[i] != null) {
-                if(overlaps[i].transform == target) {
+        foreach (Collider overlap in overlaps) {
+            if (overlap != null) {
+                if(overlap.transform == target) {
                     Vector3 directionBetween = (target.position - checkingObject.position).normalized;
                     directionBetween.y *= 0; // dont count height in distance calculation
 
@@ -72,7 +72,7 @@ public class SprinklerController : MonoBehaviour {
     // Update is called once per frame
     private void Update() {
         isInFOV = inFOV(transform, player, maxAngle, maxRadius);
-        transform.Rotate(0,1,0);
+        transform.Rotate(0, speed, 0);
     }
 
 }
