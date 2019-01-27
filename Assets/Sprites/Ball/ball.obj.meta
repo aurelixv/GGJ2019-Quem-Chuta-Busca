@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 65678a3c9887bb543aa1e3db7bfbc395
+guid: 5fe041c4b96ee504894087fe3cd97c79
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: tree-0
+    100000: ball
     100002: //RootNode
-    400000: tree-0
+    400000: ball
     400002: //RootNode
     2100000: palette
-    2300000: tree-0
-    3300000: tree-0
-    4300000: tree-0
+    2300000: ball
+    3300000: ball
+    4300000: ball
   externalObjects: {}
   materials:
     importMaterials: 1
