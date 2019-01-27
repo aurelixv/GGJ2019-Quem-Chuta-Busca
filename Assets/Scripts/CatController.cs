@@ -23,8 +23,14 @@ public class CatController : MonoBehaviour
     {
         if (other.tag == "Player") {
             audio.Play(0);
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            StartCoroutine(xunda(audio));
             //return;
+        }
+
+        IEnumerator xunda(AudioSource audio)
+        {
+            yield return new WaitForSecondsRealtime(audio.clip.length);
+            SceneManager.LoadScene("fail");
         }
     }
 }

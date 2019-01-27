@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FOV_Detection : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class FOV_Detection : MonoBehaviour {
     public Gradient gradient;
     public GradientColorKey[] gradientColorKey;
     public GradientAlphaKey[] gradientAlphaKey;
+    public AudioSource audio;
 
     private bool isInFOV = false;
 
@@ -104,13 +106,22 @@ public class FOV_Detection : MonoBehaviour {
     {
         if (isInFOV)
         {
-            slider.value += multiplicador;
-            spotBar.color = gradient.Evaluate(slider.value);
+            //slider.value += multiplicador;
+            //spotBar.color = gradient.Evaluate(slider.value);
+            audio.Play();
+            StartCoroutine(xunda(audio));
+
         }
-        else if(slider.value > 0)
-        {
-            slider.value -= multiplicador/2;
-            spotBar.color = gradient.Evaluate(slider.value);
-        }
+        //else if(slider.value > 0)
+        //{
+        //    slider.value -= multiplicador/2;
+        //    spotBar.color = gradient.Evaluate(slider.value);
+        //}
+    }
+
+    IEnumerator xunda(AudioSource audio)
+    {
+        yield return new WaitForSecondsRealtime(audio.clip.length);
+        SceneManager.LoadScene("fail");
     }
 }
