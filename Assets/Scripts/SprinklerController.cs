@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SprinklerController : MonoBehaviour {
 
@@ -72,6 +73,10 @@ public class SprinklerController : MonoBehaviour {
     // Update is called once per frame
     private void Update() {
         isInFOV = inFOV(transform, player, maxAngle, maxRadius);
+        if (isInFOV) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            return;
+        }
         transform.Rotate(0, speed, 0);
     }
 
