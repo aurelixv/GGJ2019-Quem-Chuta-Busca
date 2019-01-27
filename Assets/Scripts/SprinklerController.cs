@@ -9,6 +9,7 @@ public class SprinklerController : MonoBehaviour {
     public float maxAngle = 20;
     public float maxRadius = 5;
     public int speed = 2;
+    public bool direction = false;
 
     private bool isInFOV = false;
 
@@ -77,7 +78,12 @@ public class SprinklerController : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             return;
         }
-        transform.Rotate(0, speed, 0);
+        if (direction) {
+            transform.Rotate(0, speed, 0);
+        } else {
+            transform.Rotate(0, - speed, 0);
+        }
+        
     }
 
 }
