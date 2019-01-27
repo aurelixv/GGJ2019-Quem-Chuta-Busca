@@ -75,7 +75,11 @@ public class SprinklerController : MonoBehaviour {
     private void Update() {
         isInFOV = inFOV(transform, player, maxAngle, maxRadius);
         if (isInFOV) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            //weapon.WeaponTransform.gameObject.SetActive(false);
+            SceneManager.LoadScene("fail");
             return;
         }
         if (direction) {
@@ -83,7 +87,7 @@ public class SprinklerController : MonoBehaviour {
         } else {
             transform.Rotate(0, - speed, 0);
         }
-        
+
     }
 
 }
