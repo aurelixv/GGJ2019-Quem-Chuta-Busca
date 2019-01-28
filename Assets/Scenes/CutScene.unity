@@ -151,7 +151,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -777,7 +777,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 147130372, guid: e753d35e9c9b91947bddc6b704c5a8c4, type: 3}
       propertyPath: m_Name
-      value: Ball
+      value: BallKickAnimation
       objectReference: {fileID: 0}
     - target: {fileID: 147130373, guid: e753d35e9c9b91947bddc6b704c5a8c4, type: 3}
       propertyPath: m_LocalPosition.x

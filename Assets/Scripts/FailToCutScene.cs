@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CutSceneToGame : MonoBehaviour {
+public class FailToCutScene : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         int sec = 2;
@@ -13,6 +13,6 @@ public class CutSceneToGame : MonoBehaviour {
     IEnumerator Wait(int sec)
     {
         yield return new WaitForSeconds(sec);
-        SceneManager.LoadScene("main 1");
+        SceneManager.LoadScene("CutScene");
     }
 }
